@@ -1,0 +1,27 @@
+<div class="container"  class="mat-elevation-z8">
+<table mat-table [dataSource]="agents">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let agent"> {{ agent.name }} </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let agent"> {{ agent.email }} </td>
+  </ng-container>
+  <ng-container matColumnDef="licenseNumber">
+    <th mat-header-cell *matHeaderCellDef> License Number </th>
+    <td mat-cell *matCellDef="let agent"> {{ agent.licenseNumber }} </td>
+  </ng-container>
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let agent">
+      <button mat-icon-button color="primary" (click)="viewAgentDetails(agent.id)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="['name', 'email', 'licenseNumber', 'details']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['name', 'email', 'licenseNumber', 'details']"></tr>
+</table>
+<button mat-raised-button color="primary" class="submit-button" (click)="createAgent()">Create Agent</button>
+</div>

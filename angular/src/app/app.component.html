@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="app.component.css">
+  <link href="https://cdn.jsdelivr.net/npm/@angular/material/prebuilt-themes/pink-bluegrey.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="mat-typography custom-theme">
+<header style="position: relative;">
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="toolbar-row">
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu" (click)="updateLoggedInStatus()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a mat-menu-item *ngIf="!isLoggedIn" routerLink="login">
+          <mat-icon>input</mat-icon>
+          <span>LOGIN</span>
+        </a>
+        <a mat-menu-item *ngIf="role === 'USER'" routerLink="userproperties">
+          <mat-icon>home</mat-icon>
+          <span>PROPERTIES</span>
+        </a>
+        <a mat-menu-item *ngIf="role === 'USER'" routerLink="userdeals">
+          <mat-icon>assignment</mat-icon>
+          <span>MY DEALS</span>
+        </a>
+        <a mat-menu-item *ngIf="role === 'ADMIN'" routerLink="agents">
+          <mat-icon>people</mat-icon>
+          <span>AGENTS</span>
+        </a>
+        <a mat-menu-item *ngIf="role === 'ADMIN'" routerLink="adminproperties">
+          <mat-icon>home</mat-icon>
+          <span>PROPERTIES</span>
+        </a>
+        <a mat-menu-item *ngIf="role === 'ADMIN'" routerLink="admindeal">
+          <mat-icon>assignment</mat-icon>
+          <span>DEALS</span>
+        </a>
+        <a mat-menu-item *ngIf="isLoggedIn" routerLink="user">
+          <mat-icon>person</mat-icon>
+          <span>USER</span>
+        </a>
+        <button mat-menu-item *ngIf="isLoggedIn" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>LOGOUT</span>
+        </button>
+      </mat-menu>
+      <span class="logo" style="position: absolute; right: 20px;">
+            <i class="fa fa-home"></i>
+            <span class="logo-text">PROPERTY FOR SALE</span>
+          </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+  <footer>
+    <p>&nbsp;</p>
+  </footer>
+</main>
+</body>
+</html>

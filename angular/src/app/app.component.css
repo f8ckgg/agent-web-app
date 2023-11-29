@@ -1,0 +1,25 @@
+main {
+  background-image: url("1.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.logo-text {
+  font-size: 24px;
+}
+footer p {
+  margin: 0;
+  font-size: 14px;
+  background-color: #c2185b;
+}
+.mat-menu-content {
+  background-color: #f2f2f2;
+}
+
+.mat-menu-item {
+  color: #333;
+}
+
+.mat-menu-item:hover {
+  background-color: #ddd;
+}

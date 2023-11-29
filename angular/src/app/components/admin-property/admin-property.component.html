@@ -1,0 +1,33 @@
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Address:</mat-label>
+    <input type="text" matInput formControlName="address">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Price:</mat-label>
+    <input type="text" matInput formControlName="price">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description:</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+  <mat-form-field field="fill">
+    <mat-label>Agent</mat-label>
+    <mat-select formControlName="agent" placeholder="Select a agent">
+      <mat-option *ngFor="let agent of agents" [value]="agent.id">{{ agent.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div *ngIf="propertyId">
+  <mat-form-field field="fill">
+  <mat-label>Available</mat-label>
+  <mat-select formControlName="available">
+    <mat-option value="true">Available</mat-option>
+    <mat-option value="false">Disable</mat-option>
+  </mat-select>
+  </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end">
+    <button type="submit" mat-raised-button class="submit-button">Submit</button>
+    <button type="button" mat-raised-button color="warn" class="submit-button"(click)="onDelete()" *ngIf="propertyId">Delete</button>
+  </div>
+</form>

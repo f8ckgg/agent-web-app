@@ -1,0 +1,37 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="full-width-table">
+
+    <ng-container matColumnDef="propertyAddress">
+      <th mat-header-cell *matHeaderCellDef>Property Address</th>
+      <td mat-cell *matCellDef="let deal">{{ deal.property.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="propertyPrice">
+      <th mat-header-cell *matHeaderCellDef>Property Price</th>
+      <td mat-cell *matCellDef="let deal">{{ deal.property.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="agentName">
+      <th mat-header-cell *matHeaderCellDef>Agent Name</th>
+      <td mat-cell *matCellDef="let deal">{{ deal.property.agent.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="agentEmail">
+      <th mat-header-cell *matHeaderCellDef>Agent Email</th>
+      <td mat-cell *matCellDef="let deal">{{ deal.property.agent.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let deal">{{ deal.status }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let deal">
+        <a mat-button color="primary" [routerLink]="['/createrating', deal.property.agent.id]">Rate Agent</a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
